@@ -1,18 +1,20 @@
 #!/bin/bash
 
+INSTALL_DIR="/opt/dhcp_dns_manager"
+
 OUT_DNS_INT="dns_int.txt"
 OUT_DNS_EXT="dns_ext.txt"
 OUT_DHCP="dhcp.txt"
 OUT_DHCPv6="dhcpv6.txt"
 
-BASE_DNS="base_dns.txt"
-BASE_DHCP="base_dhcp.txt"
-BASE_DHCPv6="base_dhcpv6.txt"
+BASE_DNS="${INSTALL_DIR}/base_dns.txt"
+BASE_DHCP="${INSTALL_DIR}/base_dhcp.txt"
+BASE_DHCPv6="${INSTALL_DIR}/base_dhcpv6.txt"
 
 
-GENERATOR="../main"
-HOSTS="hosts.txt"
-FIREWALL="firewall.txt"
+GENERATOR="${INSTALL_DIR}/main"
+HOSTS="${INSTALL_DIR}/hosts.txt"
+FIREWALL="${INSTALL_DIR}/firewall.txt"
 v4_PREFIX="192.168"
 v4_EXTERNAL="8.8.8.8"
 v6_PREFIX="fd00"

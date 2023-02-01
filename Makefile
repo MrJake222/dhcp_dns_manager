@@ -33,7 +33,7 @@ ifeq (0, $(words $(findstring $(MAKECMDGOALS), $(NODEPS))))
 endif
 
 # ------
-all: $(MAIN) $(TEST)
+all: $(MAIN)
 
 install:
 	@./install.sh
