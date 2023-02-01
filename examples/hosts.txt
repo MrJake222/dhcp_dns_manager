@@ -1,0 +1,3 @@
+# mac				ipv4	ipv6	name	options
+xx:xx:xx:xx:xx:xx	.1.2	::2		com2				# computer 2
+

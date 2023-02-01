@@ -1,0 +1,8 @@
+11:22:33:AA:BB:cc    192.168.1.2 ::2				npc    			nosth,dosth
+11:22:33:AA:bb:CC    192.168.1.6 ::6				npc6    			nosth6,dosth6
+
+
+
+
+
+

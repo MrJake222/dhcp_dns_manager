@@ -1,0 +1,9 @@
+11:22:33:AA:BB:01    .1.2 ::2				npc    			dosth
+11:22:33:AA:bb:02    .1.6 ::6				npc6    		nosth,dosth
+11:22:33:AA:bb:03    .1.7 ::7				npc7    		nosth
+
+
+
+
+
+
