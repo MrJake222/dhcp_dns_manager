@@ -35,6 +35,9 @@ endif
 # ------
 all: $(MAIN) $(TEST)
 
+install:
+	@./install.sh
+
 $(MAIN): $(MAIN).o $(MAIN_DEPS:.cpp=.o)
 	$(CXX) $^ -o $@ $(MAIN_LD)
 		
