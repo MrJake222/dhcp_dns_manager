@@ -31,3 +31,11 @@ TEST (FirewallTest, TestDuplicateGlobal) {
      mvect.parse_firewall_file("tests/test_2_duplicate_global.txt");
  }, std::runtime_error);
 }
+
+TEST (FirewallTest, TestNonexistingHosts) {
+    MachineVect mvect("192.168", "", "fd00");
+    mvect.parse_machine_file("tests/hosts.txt");
+    ASSERT_THROW({
+     mvect.parse_firewall_file("tests/test_2_nonexisting_hosts.txt");
+ }, std::runtime_error);
+}

@@ -29,7 +29,7 @@ void read_file_line_by_line(const std::string& path, const std::function<void(st
             parse_line(std::stringstream(line));
         }
         catch (const std::runtime_error& err) {
-            cout << "line " << line_no << ": " << err.what() << endl;
+            cout << path << ", line " << line_no << ": " << err.what() << endl;
             throw err;
         }
     }
@@ -75,7 +75,11 @@ void MachineVect::parse_firewall_file(const std::string &path) {
         std::string name;
         line_stream >> name;
 
-        MachinePtr m = name_map[name];
+        if (name_map.count(name) == 0) {
+            throw std::runtime_error("no such hostname to add firewall rule");
+        }
+
+        MachinePtr m = name_map.at(name);
         FirewallRule new_rule = m->parse_rule(line_stream);
 
         if (new_rule.should_pass_v4_external() && external_ports.count(new_rule.get_external_port()) > 0) {
