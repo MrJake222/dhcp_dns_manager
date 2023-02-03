@@ -1,0 +1,2 @@
+$TTL 1d
+$ORIGIN int.home.local.

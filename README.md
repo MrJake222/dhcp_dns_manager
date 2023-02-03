@@ -17,12 +17,13 @@
 ## Hosts file
 Consists of hosts defined in single lines, whitespace character separated,
 supports comments with `#`. Columns:
-* `mac` -- MAC address (must be unique)
+* `mac` -- MAC address (must be unique, treated as placeholder if `static` flag set)
 * `ipv4` -- v4 suffix (host octets with leading dot, ex. `.1.2`)
 * `ipv6` -- v6 suffix (host part, with leading `:` or `::`, ex. `::2`)
 * `name` -- name (DNS compatible)
 * `options` (optional) -- options (comma separated list). Possible values:
 	* `nov6` -- host doesn't support v6 addresses (ESP for example). DHCPv6/DNS AAAA records not generated
+	* `static` -- host has static address bound (no mac needed, no DHCP records generated, DNS records)
 
 Example input:
 ```

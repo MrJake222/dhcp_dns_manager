@@ -63,3 +63,16 @@ TEST (ParserTest, TestFormattingComments) {
     mvect.parse_machine_file("tests/test_1_formatting.txt");
     ASSERT_EQ(mvect.size(), 5);
 }
+
+TEST (ParserTest, TestNoMac) {
+    MachineVect mvect("192.168", "", "fd00");
+    mvect.parse_machine_file("tests/test_1_nomac.txt");
+    ASSERT_EQ(mvect.size(), 5);
+}
+
+TEST (ParserTest, TestNoMacErr) {
+    MachineVect mvect("192.168", "", "fd00");
+    ASSERT_THROW(
+    { mvect.parse_machine_file("tests/test_1_nomac_err.txt"); },
+    std::runtime_error);
+}

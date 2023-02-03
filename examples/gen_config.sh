@@ -2,12 +2,12 @@
 
 INSTALL_DIR="/opt/dhcp_dns_manager"
 
-OUT_DNS_INT="dns_int.txt"
-OUT_DNS_EXT="dns_ext.txt"
+OUT_DNS="dns.txt"
 OUT_DHCP="dhcp.txt"
 OUT_DHCPv6="dhcpv6.txt"
 
-BASE_DNS="${INSTALL_DIR}/base_dns.txt"
+BASE_DNS_INT="${INSTALL_DIR}/base_dns_int.txt"
+BASE_DNS_EXT="${INSTALL_DIR}/base_dns_ext.txt"
 BASE_DHCP="${INSTALL_DIR}/base_dhcp.txt"
 BASE_DHCPv6="${INSTALL_DIR}/base_dhcpv6.txt"
 
@@ -26,10 +26,10 @@ function dns {
 	echo "generating dns"
 	
 	serial=$(date +"%y%m%d%H%M")
-	cat ${BASE_DNS} | sed "s/SERIAL/${serial} ; serial/g" > ${OUT_DNS_INT}
-	cat ${BASE_DNS} | sed "s/SERIAL/${serial} ; serial/g" > ${OUT_DNS_EXT}
-	call_gen dnsint >> ${OUT_DNS_INT}
-	call_gen dnsext >> ${OUT_DNS_EXT}
+	cat ${BASE_DNS_EXT} | sed "s/SERIAL/${serial} ; serial/g" > ${OUT_DNS}
+	call_gen dnsext		>> ${OUT_DNS}
+	cat ${BASE_DNS_INT} >> ${OUT_DNS}
+	call_gen dnsint		>> ${OUT_DNS}
 }
 
 function dhcp {

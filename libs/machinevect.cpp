@@ -52,15 +52,18 @@ void MachineVect::parse_machine_file(const std::string& path) {
         // eof can happen for malformed input
         // if this happens we don't catch anything just bubble up the exception
 
-        if (mac_set.count(machine->get_mac())) {
-            throw std::runtime_error("duplicate mac address");
+        if (!machine->has_flag("static")) {
+            if (mac_set.count(machine->get_mac())) {
+                throw std::runtime_error("duplicate mac address");
+            }
+
+            mac_set.insert(machine->get_mac());
         }
 
         if (name_map.count(machine->get_name())) {
             throw std::runtime_error("duplicate name");
         }
 
-        mac_set.insert(machine->get_mac());
         mvect.push_back(machine);
         name_map[machine->get_name()] = machine;
         name_max_len = std::max(name_max_len, machine->get_name().length());
