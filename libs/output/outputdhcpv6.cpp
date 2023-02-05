@@ -10,9 +10,9 @@ void OutputDHCPv6::write(std::ostream& os, MachinePtrConst m, const MachineVect&
     if (m->has_flag("static"))
         return;
 
-    // host NorbertPC { hardware ethernet 4C:CC:6A:22:AA:9F; fixed-address 192.168.1.2; }
+    // host NorbertPC { hardware ethernet 4C:CC:6A:22:AA:9F; fixed-address6 fd00::1; }
     os << "host " << pad(m->get_name(), mvect.get_name_max_len() + 1) << " { ";
     os << "hardware ethernet " << m->get_mac() << "; ";
-    os << "fixed-address " << m->get_ipv6() << "; "; // TODO probably another option
+    os << "fixed-address6 " << m->get_ipv6() << "; ";
     os << "}" << std::endl;
 }
