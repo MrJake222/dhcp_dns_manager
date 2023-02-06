@@ -5,6 +5,7 @@ INSTALL_DIR="/opt/dhcp_dns_manager"
 OUT_DNS="dns.txt"
 OUT_DHCP="dhcp.txt"
 OUT_DHCPv6="dhcpv6.txt"
+OUT_NFTABLES="nftables.txt"
 
 BASE_DNS_INT="${INSTALL_DIR}/base_dns_int.txt"
 BASE_DNS_EXT="${INSTALL_DIR}/base_dns_ext.txt"
@@ -46,20 +47,13 @@ function dhcpv6 {
 	call_gen dhcpv6 >> ${OUT_DHCPv6}
 }
 
-function iptables {
-	# TODO
+function nftables {
 	echo "generating iptables"
-	echo "unimplemented"
-}
-
-function iptables6 {
-	# TODO
-	echo "generating iptables6"
-	echo "unimplemented"
+	
+	call_gen nftables >> ${OUT_NFTABLES}
 }
 
 dns
 dhcp
 dhcpv6
-iptables
-iptables6
+nftables
