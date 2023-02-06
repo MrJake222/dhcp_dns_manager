@@ -50,7 +50,7 @@ function dhcpv6 {
 function nftables {
 	echo "generating iptables"
 	
-	call_gen nftables >> ${OUT_NFTABLES}
+	call_gen nftables > ${OUT_NFTABLES}
 }
 
 dns
