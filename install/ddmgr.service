@@ -1,0 +1,10 @@
+[Unit]
+Description=Generate network configs
+Before=isc-dhcp-server.service named.service nftables.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/ddmgr_config
+
+[Install]
+WantedBy=multi-user.target

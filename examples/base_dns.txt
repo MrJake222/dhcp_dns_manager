@@ -1,10 +1,10 @@
 $TTL 1d
-$ORIGIN home.local.
-@  SOA	net-rtr.home.local. mail.home.local. (
-				2302032053 ; serial
+$ORIGIN k21a.mrwski.eu.
+@  SOA	net-rtr.k21a.mrwski.eu. mail.k21a.mrwski.eu. (
+				SERIAL ; serial
 				10800      ; refresh (3 hours)
 				300        ; retry (5 minutes)
 				604800     ; expire (1 week)
 				86400      ; minimum (1 day)
 )
-@		NS	net-rtr.home.local.
+@		NS	net-rtr.k21a.mrwski.eu.

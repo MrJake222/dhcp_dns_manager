@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := all
+.PHONY: install uninstall
 SUFFIXES += .d
 
 # ------
@@ -36,7 +37,10 @@ endif
 all: $(MAIN)
 
 install:
-	@./install.sh
+	@./install.sh install
+
+uninstall:
+	@./install.sh uninstall
 
 $(MAIN): $(MAIN).o $(MAIN_DEPS:.cpp=.o)
 	$(CXX) $^ -o $@ $(MAIN_LD)
