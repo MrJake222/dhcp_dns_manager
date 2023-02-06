@@ -33,6 +33,15 @@ std::string pad(const std::string& str, size_t to) {
     return copy;
 }
 
+std::string zfill(const std::string& str, size_t to) {
+    std::string copy(str);
+    while (copy.length() < to) {
+        copy = '0' + copy;
+    }
+
+    return copy;
+}
+
 void strip_comment(std::string& str) {
     size_t pos = str.find('#');
     if (pos != std::string::npos) {

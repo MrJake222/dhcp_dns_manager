@@ -3,12 +3,14 @@
 INSTALL_DIR="/opt/dhcp_dns_manager"
 
 OUT_DNS="dns.txt"
+OUT_DNS_REV6="rev6.txt"
 OUT_DHCP="dhcp.txt"
 OUT_DHCPv6="dhcpv6.txt"
 OUT_NFTABLES="nftables.txt"
 
 BASE_DNS_INT="${INSTALL_DIR}/base_dns_int.txt"
 BASE_DNS_EXT="${INSTALL_DIR}/base_dns_ext.txt"
+BASE_DNS_REV6="${INSTALL_DIR}/base_dns_rev6.txt"
 BASE_DHCP="${INSTALL_DIR}/base_dhcp.txt"
 BASE_DHCPv6="${INSTALL_DIR}/base_dhcpv6.txt"
 
@@ -19,8 +21,9 @@ FIREWALL="${INSTALL_DIR}/firewall.txt"
 v4_PREFIX="192.168"
 v4_EXTERNAL="8.8.8.8"
 v6_PREFIX="fd00"
+DOMAIN="home.local"
 function call_gen {
-	${GENERATOR} ${HOSTS} ${FIREWALL} ${v4_PREFIX} ${v4_EXTERNAL} ${v6_PREFIX} $1
+	${GENERATOR} ${HOSTS} ${FIREWALL} ${v4_PREFIX} ${v4_EXTERNAL} ${v6_PREFIX} ${DOMAIN} $1
 }
 
 function dns {
@@ -53,7 +56,15 @@ function nftables {
 	call_gen nftables > ${OUT_NFTABLES}
 }
 
+function rev6 {
+	echo "generating rev6"
+
+	cp ${BASE_DNS_REV6} ${OUT_DNS_REV6}
+	call_gen rev6 >> ${OUT_DNS_REV6}
+}
+
 dns
 dhcp
 dhcpv6
 nftables
+rev6

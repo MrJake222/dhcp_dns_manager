@@ -4,7 +4,7 @@
 #include "../libs/machinevect.hpp"
 
 TEST (FirewallTest, TestSimple) {
-    MachineVect mvect("192.168", "", "fd00");
+    MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/hosts.txt");
     mvect.parse_firewall_file("tests/test_2_simple.txt");
 
@@ -17,7 +17,7 @@ TEST (FirewallTest, TestSimple) {
 }
 
 TEST (FirewallTest, TestMultipleProtocols) {
-    MachineVect mvect("192.168", "", "fd00");
+    MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/hosts.txt");
     mvect.parse_firewall_file("tests/test_2_tcp_udp.txt");
 
@@ -30,7 +30,7 @@ TEST (FirewallTest, TestMultipleProtocols) {
 }
 
 TEST (FirewallTest, TestDuplicateEntry) {
-    MachineVect mvect("192.168", "", "fd00");
+    MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/hosts.txt");
 
     ASSERT_THROW({
@@ -44,7 +44,7 @@ TEST (FirewallTest, TestDuplicateEntry) {
 }
 
 TEST (FirewallTest, TestDuplicateGlobal) {
-    MachineVect mvect("192.168", "", "fd00");
+    MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/hosts.txt");
 
     ASSERT_THROW({
@@ -58,7 +58,7 @@ TEST (FirewallTest, TestDuplicateGlobal) {
 }
 
 TEST (FirewallTest, TestNonexistingHosts) {
-    MachineVect mvect("192.168", "", "fd00");
+    MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/hosts.txt");
 
     ASSERT_THROW({

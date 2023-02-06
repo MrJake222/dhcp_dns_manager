@@ -36,12 +36,14 @@ std::istream& operator>>(std::istream& is, Machine& machine) {
     machine.ipv4 = machine.v4_prefix + machine.ipv4;
 
     if (is.eof()) machine.failed_exception("ipv6");
-    is >> machine.ipv6;
-    to_lower_str(machine.ipv6);
-    machine.ipv6 = machine.v6_prefix + machine.ipv6;
+    std::string ipv6;
+    is >> ipv6;
+    to_lower_str(ipv6);
+    machine.ipv6 = IPv6(machine.v6_prefix + ipv6);
 
     if (is.eof()) machine.failed_exception("name");
     is >> machine.name;
+    machine.set_fqdn();
 
     if (!is.eof()) {
         is >> machine.flags;

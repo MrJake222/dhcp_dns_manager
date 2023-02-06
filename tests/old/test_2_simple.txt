@@ -1,3 +1,0 @@
-# name	internal	external
-mpc		25565		25565		# minecraft
-npc		22 			0			# ssh (v6 only)

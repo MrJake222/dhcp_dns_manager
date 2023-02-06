@@ -46,7 +46,7 @@ void MachineVect::parse_machine_file(const std::string& path) {
     name_max_len = 0;
 
     read_file_line_by_line(path, [this](std::stringstream line_stream) {
-        MachinePtr machine(new Machine(v4_prefix, v6_prefix));
+        MachinePtr machine(new Machine(v4_prefix, v6_prefix, domain));
 
         line_stream >> *machine;
         // eof can happen for malformed input

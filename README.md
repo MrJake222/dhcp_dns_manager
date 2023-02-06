@@ -6,6 +6,7 @@
 * `v4-prefix` -- private v4 prefix to be used on local network (classful, private, no host octets, ex. `192.168`)
 * `v4-external` -- public v4 address
 * `v6-prefix` -- public v6 prefix to be used on local network (no `:`, ex. `2000`)
+* `domain` -- domain name (ex. `home.local`)
 * `config to output` -- config file suffix to generate, one of:
 	* `dhcp` -- ISC-DHCP server, v4
 	* `dhcpv6` -- ISC-DHCP server, v6

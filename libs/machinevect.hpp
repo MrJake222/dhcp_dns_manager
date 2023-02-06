@@ -16,6 +16,8 @@ class MachineVect {
 
     const std::string v6_prefix;
 
+    const std::string domain;
+
     std::unordered_set<std::string> mac_set; // used for duplicate detection
     std::vector<MachinePtr> mvect;
     std::map<std::string, MachinePtr> name_map;
@@ -24,12 +26,14 @@ class MachineVect {
     std::unordered_map<std::string, std::unordered_set<int>> per_proto_external_ports;
 
 public:
-    MachineVect(std::string  v4_prefix_,
-                std::string  v4_external_,
-                std::string  v6_prefix_)
+    MachineVect(std::string v4_prefix_,
+                std::string v4_external_,
+                std::string v6_prefix_,
+                std::string domain_)
         : v4_prefix(std::move(v4_prefix_))
         , v4_external(std::move(v4_external_))
-        , v6_prefix(std::move(v6_prefix_)) { }
+        , v6_prefix(std::move(v6_prefix_))
+        , domain(std::move(domain_)) { }
 
     class const_iterator {
     private:
