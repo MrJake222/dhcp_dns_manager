@@ -2,10 +2,6 @@
 
 #include "util.hpp"
 
-#include <iostream>
-using std::cout;
-using std::endl;
-
 /*unsigned short hex_to_short(const std::string& hex) {
 
     unsigned short res = 0;

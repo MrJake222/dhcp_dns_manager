@@ -1,5 +1,6 @@
 #include <iostream>
 using std::cout;
+using std::cerr;
 using std::endl;
 
 #include "libs/util.hpp"
@@ -12,20 +13,20 @@ using std::endl;
 #include "libs/output/outputdnsreversev6.hpp"
 
 void usage(char* pgm_name) {
-    cout << "Usage: " << pgm_name << endl;
-    cout << "\t[hosts file]" << endl;
-    cout << "\t[firewall file]" << endl;
-    cout << "\t[v4-prefix]" << endl;
-    cout << "\t[v4-external]" << endl;
-    cout << "\t[v6-prefix]" << endl;
-    cout << "\t[domain]" << endl;
-    cout << "\t[config to output: dhcp|dhcpv6|dnsint|dnsext|nftables|rev6]" << endl;
+    cerr << "Usage: " << pgm_name << endl;
+    cerr << "\t[hosts file]" << endl;
+    cerr << "\t[firewall file]" << endl;
+    cerr << "\t[v4-prefix]" << endl;
+    cerr << "\t[v4-external]" << endl;
+    cerr << "\t[v6-prefix]" << endl;
+    cerr << "\t[domain]" << endl;
+    cerr << "\t[config to output: dhcp|dhcpv6|dnsint|dnsext|nftables|rev6]" << endl;
 }
 
 int main(int argc, char** argv) {
 
     if (argc != 8) {
-        cout << "expected 7 arguments, " << argc-1 << " given." << endl;
+        cerr << "expected 7 arguments, " << argc-1 << " given." << endl;
         usage(argv[0]);
         return 1;
     }
@@ -52,7 +53,7 @@ int main(int argc, char** argv) {
     else if (config_to_output == "rev6")        cout << OutputDNSReversev6(mvect);
 
     else {
-        cout << "invalid [config to output]" << endl;
+        cerr << "invalid [config to output]" << endl;
         usage(argv[0]);
         return 2;
     }
