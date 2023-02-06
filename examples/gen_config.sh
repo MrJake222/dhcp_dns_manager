@@ -48,7 +48,7 @@ function dhcpv6 {
 }
 
 function nftables {
-	echo "generating iptables"
+	echo "generating nftables"
 	
 	call_gen nftables > ${OUT_NFTABLES}
 }
