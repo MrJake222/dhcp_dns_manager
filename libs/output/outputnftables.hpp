@@ -2,7 +2,7 @@
 
 #include "output.hpp"
 
-class OutputIpTables : public Output {
+class OutputNftables : public Output {
     using Output::Output;
     void write(std::ostream& os, MachinePtrConst m, const MachineVect& mvect) const override;
 };

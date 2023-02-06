@@ -8,8 +8,7 @@ using std::endl;
 #include "libs/output/outputdhcpv6.hpp"
 #include "libs/output/outputdnsinternal.hpp"
 #include "libs/output/outputdnsexternal.hpp"
-#include "libs/output/outputiptables.hpp"
-#include "libs/output/outputiptables6.hpp"
+#include "libs/output/outputnftables.hpp"
 
 void usage(char* pgm_name) {
     cout << "Usage: " << pgm_name << endl;
@@ -18,7 +17,7 @@ void usage(char* pgm_name) {
     cout << "\t[v4-prefix]" << endl;
     cout << "\t[v4-external]" << endl;
     cout << "\t[v6-prefix]" << endl;
-    cout << "\t[config to output: dhcp|dhcpv6|dnsint|dnsext|iptables|iptables6]" << endl;
+    cout << "\t[config to output: dhcp|dhcpv6|dnsint|dnsext|nftables]" << endl;
 }
 
 int main(int argc, char** argv) {
@@ -46,8 +45,7 @@ int main(int argc, char** argv) {
     else if (config_to_output == "dhcpv6")      cout << OutputDHCPv6(mvect);
     else if (config_to_output == "dnsint")      cout << OutputDNSInternal(mvect);
     else if (config_to_output == "dnsext")      cout << OutputDNSExternal(mvect);
-    else if (config_to_output == "iptables")    cout << OutputIpTables(mvect);
-    else if (config_to_output == "iptables6")   cout << OutputIpTables6(mvect);
+    else if (config_to_output == "nftables")    cout << OutputNftables(mvect);
 
     else {
         cout << "invalid [config to output]" << endl;

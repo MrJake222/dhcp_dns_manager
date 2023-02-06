@@ -20,16 +20,26 @@ TEST (ParserTest, TestSimple) {
 
 TEST (ParserTest, TestDuplicate) {
     MachineVect mvect("192.168", "", "fd00");
-    ASSERT_THROW(
-        { mvect.parse_machine_file("tests/test_1_duplicate.txt"); },
-    std::runtime_error);
+    ASSERT_THROW({
+        try {
+            mvect.parse_machine_file("tests/test_1_duplicate.txt");
+        } catch (const std::runtime_error& e) {
+            ASSERT_STREQ(e.what(), "duplicate mac address");
+            throw;
+        }
+    }, std::runtime_error);
 }
 
 TEST (ParserTest, TestDuplicateName) {
     MachineVect mvect("192.168", "", "fd00");
-    ASSERT_THROW(
-        { mvect.parse_machine_file("tests/test_1_duplicate_name.txt"); },
-    std::runtime_error);
+    ASSERT_THROW({
+        try {
+            mvect.parse_machine_file("tests/test_1_duplicate_name.txt");
+        } catch (const std::runtime_error& e) {
+            ASSERT_STREQ(e.what(), "duplicate name");
+            throw;
+        }
+    }, std::runtime_error);
 }
 
 TEST (ParserTest, TestFlags) {
@@ -72,7 +82,12 @@ TEST (ParserTest, TestNoMac) {
 
 TEST (ParserTest, TestNoMacErr) {
     MachineVect mvect("192.168", "", "fd00");
-    ASSERT_THROW(
-    { mvect.parse_machine_file("tests/test_1_nomac_err.txt"); },
-    std::runtime_error);
+    ASSERT_THROW({
+        try {
+            mvect.parse_machine_file("tests/test_1_nomac_err.txt");
+        } catch (const std::runtime_error& e) {
+            ASSERT_STREQ(e.what(), "duplicate mac address");
+            throw;
+        }
+    }, std::runtime_error);
 }

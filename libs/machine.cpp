@@ -22,25 +22,25 @@ bool Machine::operator<(const Machine &rhs) const {
     return this->mac < rhs.mac;
 }
 
-void failed_exception(const std::string& field_name) {
+void Machine::failed_exception(const std::string& field_name) {
     throw std::runtime_error("failed to read field \"" + field_name + "\"");
 }
 
 std::istream& operator>>(std::istream& is, Machine& machine) {
-    if (is.eof()) failed_exception("mac");
+    if (is.eof()) machine.failed_exception("mac");
     is >> machine.mac;
     to_lower_str(machine.mac);
 
-    if (is.eof()) failed_exception("ipv4");
+    if (is.eof()) machine.failed_exception("ipv4");
     is >> machine.ipv4;
     machine.ipv4 = machine.v4_prefix + machine.ipv4;
 
-    if (is.eof()) failed_exception("ipv6");
+    if (is.eof()) machine.failed_exception("ipv6");
     is >> machine.ipv6;
     to_lower_str(machine.ipv6);
     machine.ipv6 = machine.v6_prefix + machine.ipv6;
 
-    if (is.eof()) failed_exception("name");
+    if (is.eof()) machine.failed_exception("name");
     is >> machine.name;
 
     if (!is.eof()) {

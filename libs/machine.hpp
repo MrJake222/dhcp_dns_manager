@@ -19,6 +19,8 @@ class Machine {
     MachineFlags flags;
     FirewallRules firewall_rules;
 
+    static void failed_exception(const std::string& field_name);
+
 public:
     Machine() = delete;
     Machine(const Machine& other) = delete;
