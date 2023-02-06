@@ -25,7 +25,8 @@ public:
 
     bool operator==(const FirewallRule& other) const {
         return internal_port == other.internal_port &&
-               external_port == other.external_port;
+               external_port == other.external_port &&
+               protocol == other.protocol;
     }
 };
 

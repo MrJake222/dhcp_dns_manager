@@ -2,6 +2,7 @@
 
 #include "machine.hpp"
 #include <unordered_set>
+#include <unordered_map>
 #include <map>
 #include <utility>
 #include <vector>
@@ -20,7 +21,7 @@ class MachineVect {
     std::map<std::string, MachinePtr> name_map;
     size_t name_max_len = 0;
 
-    std::unordered_set<int> external_ports;
+    std::unordered_map<std::string, std::unordered_set<int>> per_proto_external_ports;
 
 public:
     MachineVect(std::string  v4_prefix_,

@@ -16,6 +16,19 @@ TEST (FirewallTest, TestSimple) {
     ASSERT_EQ(mvect.for_name("mpc")->get_firewall_rules()[0].get_external_port(), 25565);
 }
 
+TEST (FirewallTest, TestMultipleProtocols) {
+    MachineVect mvect("192.168", "", "fd00");
+    mvect.parse_machine_file("tests/hosts.txt");
+    mvect.parse_firewall_file("tests/test_2_tcp_udp.txt");
+
+    ASSERT_EQ(mvect.for_name("npc")->get_firewall_rules().size(), 3);
+    ASSERT_EQ(mvect.for_name("mpc")->get_firewall_rules().size(), 3);
+    ASSERT_EQ(mvect.for_name("npc")->get_firewall_rules()[0].get_protocol(), "tcp");
+    ASSERT_EQ(mvect.for_name("npc")->get_firewall_rules()[1].get_protocol(), "udp");
+    ASSERT_EQ(mvect.for_name("mpc")->get_firewall_rules()[0].get_protocol(), "tcp");
+    ASSERT_EQ(mvect.for_name("mpc")->get_firewall_rules()[1].get_protocol(), "udp");
+}
+
 TEST (FirewallTest, TestDuplicateEntry) {
     MachineVect mvect("192.168", "", "fd00");
     mvect.parse_machine_file("tests/hosts.txt");

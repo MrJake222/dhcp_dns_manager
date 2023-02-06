@@ -41,6 +41,7 @@ Columns:
 * `name` -- Maps to name from hosts file
 * `internal` -- internal port number (of machine)
 * `external` -- external port number (used only for v4 NAT, `0` to disable v4 access)
+* `protocol` -- protocol to forward (ex. tcp, udp, sctp. Provide single one)
 
 Example input:
 ```

@@ -72,7 +72,7 @@ void MachineVect::parse_machine_file(const std::string& path) {
 
 void MachineVect::parse_firewall_file(const std::string &path) {
 
-    external_ports.clear();
+    per_proto_external_ports.clear();
 
     read_file_line_by_line(path, [this](std::stringstream line_stream) {
         std::string name;
@@ -84,6 +84,8 @@ void MachineVect::parse_firewall_file(const std::string &path) {
 
         MachinePtr m = name_map.at(name);
         FirewallRule new_rule = m->parse_rule(line_stream);
+
+        std::unordered_set<int>& external_ports = per_proto_external_ports[new_rule.get_protocol()];
 
         if (new_rule.should_pass_v4_external() && external_ports.count(new_rule.get_external_port()) > 0) {
             throw std::runtime_error("duplicate external v4 port, set to 0 to disable (v6-only accessible)");

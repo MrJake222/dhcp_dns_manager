@@ -1,0 +1,8 @@
+# name	internal	external    proto
+npc		22 			0			tcp
+npc		22 			0			udp
+mpc		25565 		25565		tcp
+mpc		25565 		25565		udp
+
+npc     54          54          tcp
+mpc     54          54           udp
