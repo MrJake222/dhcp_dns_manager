@@ -1,10 +1,11 @@
 [Unit]
 Description=Generate network configs
-Before=isc-dhcp-server.service named.service nftables.service
+PartOf=isc-dhcp-server.service named.service nftables.service
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 ExecStart=/usr/local/bin/ddmgr_config
 
 [Install]
-WantedBy=multi-user.target
+RequiredBy=isc-dhcp-server.service named.service nftables.service
