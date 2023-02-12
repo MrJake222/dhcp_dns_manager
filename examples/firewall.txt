@@ -1,3 +1,0 @@
-# name		internal	external	proto
-com2		25565		25565		tcp		# minecraft
-com2		22 			0			tcp		# ssh (v6 only)

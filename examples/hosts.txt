@@ -1,4 +1,0 @@
-# mac				ipv4	ipv6	name		options
-unknown				.1.2	::2		net-rtr		static,		# router
-xx:xx:xx:xx:xx:xx	.1.2	::2		com2					# computer 2
-
