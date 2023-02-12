@@ -1,0 +1,4 @@
+# mac				ipv4	ipv6	name		options
+unknown				.0.2	::2		srv1		static		# server
+xx:xx:xx:xx:xx:xx	.0.3	::3		com33					# computer 33
+

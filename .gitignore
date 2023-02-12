@@ -1,7 +1,8 @@
 .idea
 
-# Prerequisites
+# Prerequisites (but not .d directories)
 *.d
+!*.d/
 
 # Compiled Object files
 *.slo
