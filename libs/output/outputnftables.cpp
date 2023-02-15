@@ -5,9 +5,12 @@
 void OutputNftables::write(std::ostream& os, MachinePtrConst m, const MachineVect& mvect) const {
 
     for (const FirewallRule &rule: m->get_firewall_rules()) {
-        // ipv6 forward rule
-        // add rule inet filter forward ip6 daddr 2001:470:6166::1:1 tcp dport 22 accept
-        os << "add rule inet filter forward ip6 daddr " << m->get_ipv6() << " " << rule.get_protocol() << " dport " << rule.get_internal_port() << " accept" << std::endl;
+
+        if (!m->has_flag("nov6")) {
+            // ipv6 forward rule
+            // add rule inet filter forward ip6 daddr 2001:470:6166::1:1 tcp dport 22 accept
+            os << "add rule inet filter forward ip6 daddr " << m->get_ipv6() << " " << rule.get_protocol() << " dport " << rule.get_internal_port() << " accept" << std::endl;
+        }
 
         // ipv4 forward rule
         // add rule inet filter forward ip daddr 172.16.1.1 tcp dport 22 accept
