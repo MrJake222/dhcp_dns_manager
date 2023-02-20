@@ -1,6 +1,7 @@
 [Unit]
 Description=Generate network configs
-PartOf=isc-dhcp-server.service named.service nftables.service
+# very aggresive bind
+# PartOf=isc-dhcp-server.service named.service nftables.service
 
 [Service]
 Type=oneshot
