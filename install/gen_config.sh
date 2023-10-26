@@ -1,11 +1,10 @@
 #!/bin/bash
 
+# required duplication to get DIR_CONF
 DIR_PREFIX="/usr/local"
 PROJ_NAME="ddmgr"
 DIR_BIN="${DIR_PREFIX}/bin"
 DIR_CONF="${DIR_PREFIX}/etc/${PROJ_NAME}"
-DIR_CONF_SUBNET="${DIR_CONF}/subnets.d"
-FILE_EXEC="${DIR_BIN}/${PROJ_NAME}"
 
 . ${DIR_CONF}/main.conf
 
@@ -62,7 +61,7 @@ cp ${BASE_DHCPv6} ${OUT_DHCPv6}
 # reverse v6 dns
 cp ${BASE_DNS_REV6} ${OUT_DNS_REV6}
 
-for dir in ${DIR_CONF_SUBNET}/*; do
+for dir in ${DIR_CONF_SUBNETS}/*; do
 	echo "parsing $dir"
 	
 	. $dir/subnet.conf
