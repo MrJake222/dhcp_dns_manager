@@ -17,9 +17,9 @@ void OutputNftables::write(std::ostream& os, MachinePtrConst m, const MachineVec
         os << "add rule inet filter forward ip daddr " << m->get_ipv4() << " " << rule.get_protocol() << " dport " << rule.get_internal_port() << " accept" << std::endl;
 
         // ipv4 nat
-        // add rule ip nat prerouting tcp dport 222 dnat to 172.16.1.1:22
+        // add rule ip nat prerouting ip saddr != $INTERNAL tcp dport 222 dnat to 172.16.1.1:22
         if (rule.should_pass_v4_external()) {
-            os << "add rule ip nat prerouting " << rule.get_protocol() << " dport " << rule.get_external_port() << " dnat to " << m->get_ipv4() << ":" << rule.get_internal_port() << std::endl;
+            os << "add rule ip nat prerouting ip saddr != $INTERNAL " << rule.get_protocol() << " dport " << rule.get_external_port() << " dnat to " << m->get_ipv4() << ":" << rule.get_internal_port() << std::endl;
         }
     }
 }
