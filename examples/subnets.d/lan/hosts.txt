@@ -1,4 +1,4 @@
 # mac				ipv4	ipv6	name		options
-unknown				.1.2	::2		net-rtr		static		# router
-xx:xx:xx:xx:xx:xx	.1.3	::3		com2					# computer 2
+unknown			.1.2	::2		net-rtr		static,alias=@	# router
+xx:xx:xx:xx:xx:xx	.1.3	::3		com2				# computer 2
 
