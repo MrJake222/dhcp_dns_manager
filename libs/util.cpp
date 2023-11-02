@@ -52,3 +52,11 @@ void strip_comment(std::string& str) {
 void to_lower_str(std::string& str) {
     std::transform(str.begin(), str.end(), str.begin(), [](unsigned char c){ return std::tolower(c); });
 }
+
+void dns_record(std::ostream &os, const std::string& name, int name_max_len, const std::string& record_type, const std::string& value) {
+    // LAPTOP-CO9OHV8O		A	192.168.1.179
+    os << pad(name, name_max_len + 4);
+    os << record_type << "       ";
+    os << value;
+    os << std::endl;
+}

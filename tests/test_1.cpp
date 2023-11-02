@@ -55,7 +55,7 @@ TEST (ParserTest, TestDuplicateName) {
 TEST (ParserTest, TestFlags) {
     MachineVect mvect("192.168", "", "fd00", "home.local");
     mvect.parse_machine_file("tests/test_1_flags.txt");
-    ASSERT_EQ(mvect.size(), 3);
+    ASSERT_EQ(mvect.size(), 4);
 
     ASSERT_TRUE(mvect[0]->has_flag("dosth"));
     ASSERT_FALSE(mvect[0]->has_flag("nosth"));
@@ -65,6 +65,11 @@ TEST (ParserTest, TestFlags) {
 
     ASSERT_FALSE(mvect[2]->has_flag("dosth"));
     ASSERT_TRUE(mvect[2]->has_flag("nosth"));
+
+    ASSERT_TRUE(mvect[3]->has_flag("alias"));
+    ASSERT_EQ(mvect[3]->get_flag("alias").size(), 2);
+    ASSERT_EQ(mvect[3]->get_flag("alias")[0], "123");
+    ASSERT_EQ(mvect[3]->get_flag("alias")[1], "321");
 }
 
 TEST (ParserTest, TestNameMapping) {

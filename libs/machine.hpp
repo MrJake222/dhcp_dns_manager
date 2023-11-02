@@ -41,8 +41,10 @@ public:
     std::string get_ipv4() const { return ipv4; }
     const IPv6& get_ipv6() const { return ipv6; }
     std::string get_name() const { return name; }
+    std::vector<std::string> get_names() const; // with aliases
     std::string get_fqdn() const { return fqdn; }
     bool has_flag(const std::string& flag) const { return flags.has(flag); }
+    std::vector<std::string> get_flag(const std::string& flag) const { return flags.get(flag); }
 
     // return last added rule
     FirewallRule parse_rule(std::istream& is) { is >> firewall_rules; return firewall_rules[firewall_rules.size()-1]; }

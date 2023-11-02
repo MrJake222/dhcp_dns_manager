@@ -25,6 +25,7 @@ supports comments with `#`. Columns:
 * `options` (optional) -- options (comma separated list). Possible values:
 	* `nov6` -- host doesn't support v6 addresses (ESP for example). DHCPv6/DNS AAAA records not generated
 	* `static` -- host has static address bound (no mac needed, no DHCP records generated, DNS records)
+	* `alias=xxx` -- another name (generates additional forward DNS entries)
 
 Example input:
 ```

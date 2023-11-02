@@ -17,6 +17,7 @@ public:
 
     std::string get_reverse_dns(int mask) const;
     const std::string& get_group(int idx) const { return groups[idx]; }
+    const std::string& get_original() const { return original; }
 
     friend std::ostream& operator<<(std::ostream& os, const IPv6& ip6);
 };
