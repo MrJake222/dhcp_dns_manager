@@ -56,7 +56,8 @@ std::vector<std::string> Machine::get_names() const {
     std::vector<std::string> names;
     names.push_back(get_name());
     if (has_flag("alias")) {
-        std::copy(get_flag("alias").begin(), get_flag("alias").end(), names.end());
+        for (const std::string& alias : get_flag("alias"))
+            names.push_back(alias);
     }
     return names;
 }

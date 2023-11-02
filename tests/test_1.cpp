@@ -70,6 +70,11 @@ TEST (ParserTest, TestFlags) {
     ASSERT_EQ(mvect[3]->get_flag("alias").size(), 2);
     ASSERT_EQ(mvect[3]->get_flag("alias")[0], "123");
     ASSERT_EQ(mvect[3]->get_flag("alias")[1], "321");
+    ASSERT_EQ(mvect[3]->get_name(), "npc8");
+    ASSERT_EQ(mvect[3]->get_names().size(), 3);
+    ASSERT_EQ(mvect[3]->get_names()[0], "npc8");
+    ASSERT_EQ(mvect[3]->get_names()[1], "123");
+    ASSERT_EQ(mvect[3]->get_names()[2], "321");
 }
 
 TEST (ParserTest, TestNameMapping) {
