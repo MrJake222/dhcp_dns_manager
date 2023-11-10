@@ -2,6 +2,9 @@
 Description=Generate network configs
 # very aggresive bind
 # PartOf=isc-dhcp-server.service named.service nftables.service
+# really important
+# config service needs to finish before starting server units
+Before=isc-dhcp-server.service named.service nftables.service
 
 [Service]
 Type=oneshot
